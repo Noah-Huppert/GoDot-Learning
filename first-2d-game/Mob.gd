@@ -2,6 +2,8 @@ extends RigidBody2D
 
 var mob_size = 1.0
 
+var showing = false
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	hide()
@@ -12,6 +14,9 @@ func _ready():
 
 func _integrate_forces(state):
 	set_scale(Vector2(mob_size, mob_size))
+	if not showing:
+		showing = true
+		show()
 
 func _on_VisibilityNotifier2D_screen_exited():
 	queue_free()

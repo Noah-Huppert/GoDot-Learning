@@ -82,12 +82,10 @@ func _on_MobSpawnTimer_timeout():
 	mob.rotation = mob_spawn_pos.rotation + rand_range(PI / 4, (3* PI) / 4)
 	
 	# Set a velocity rotated in the direction its facing
-	mob.linear_velocity = Vector2(150.0, 0.0).rotated(mob.rotation)
+	mob.linear_velocity = Vector2(100, 0.0).rotated(mob.rotation)
 	
 	# Make it smaller the harder difficulty it is
 	mob.mob_size = 1 / difficulty
-	
-	mob.show()
 
 func _on_ScoreTimer_timeout():
 	# Increase score
