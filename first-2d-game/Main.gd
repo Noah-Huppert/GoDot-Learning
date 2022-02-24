@@ -30,28 +30,34 @@ func _ready():
 
 # Initialize game
 func new_game():
-	game_score_label.display_new_game()
-	game_score_label.show()
 	$GameOverUI.hide()
+	$GameStartUI.start()
 	
 	score = 0
 	$Player.start($StartPosition.position)
-	$StartTimer.start()
+	$Player.hide()
 	
 	update_mob_spawn_timer()
 	
 # When the player is hit
 func game_over():
+	# Stop timers
 	$ScoreTimer.stop()
 	$MobSpawnTimer.stop()
 	
+	# Hide player
+	$Player.hide()
+	
+	# Remove enemies
+	for mob in $Mobs.get_children():
+		mob.queue_free()
+	
+	# Setup UI
 	game_score_label.hide()
 	$GameOverUI.set_game_over(score, difficulty)
-	
-	print("Game over")
 
 # Begin the game after a delay
-func _on_StartTimer_timeout():
+func begin_game():
 	game_score_label.show()
 	game_score_label.display_score(score, difficulty)
 	
@@ -63,7 +69,7 @@ func _on_StartTimer_timeout():
 func _on_MobSpawnTimer_timeout():
 	# Setup mob to spawn
 	var mob = mob_scene.instance()
-	add_child(mob)
+	$Mobs.add_child(mob)
 	
 	var mob_spawn_pos = get_node("MobPath/MobSpawnPosition")
 	
