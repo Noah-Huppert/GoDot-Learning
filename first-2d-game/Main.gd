@@ -34,6 +34,7 @@ func new_game():
 	$GameStartUI.start()
 	
 	score = 0
+	difficulty = 1
 	$Player.start($StartPosition.position)
 	$Player.hide()
 	
@@ -85,6 +86,8 @@ func _on_MobSpawnTimer_timeout():
 	
 	# Make it smaller the harder difficulty it is
 	mob.mob_size = 1 / difficulty
+	
+	mob.show()
 
 func _on_ScoreTimer_timeout():
 	# Increase score

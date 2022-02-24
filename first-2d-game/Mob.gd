@@ -4,6 +4,7 @@ var mob_size = 1.0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	hide()
 	$AnimatedSprite.playing = true
 	
 	#var mob_types = $AnimatedSprite.frames.get_animation_names()
