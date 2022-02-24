@@ -6,8 +6,8 @@ var mob_size = 1.0
 func _ready():
 	$AnimatedSprite.playing = true
 	
-	var mob_types = $AnimatedSprite.frames.get_animation_names()
-	$AnimatedSprite.animation = mob_types[randi() % mob_types.size()]
+	#var mob_types = $AnimatedSprite.frames.get_animation_names()
+	#$AnimatedSprite.animation = mob_types[randi() % mob_types.size()]
 
 func _integrate_forces(state):
 	set_scale(Vector2(mob_size, mob_size))

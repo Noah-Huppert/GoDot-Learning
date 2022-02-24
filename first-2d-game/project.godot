@@ -24,6 +24,9 @@ window/stretch/aspect="keep"
 [global]
 
 window=false
+size=false
+width=false
+resol=false
 
 [input]
 

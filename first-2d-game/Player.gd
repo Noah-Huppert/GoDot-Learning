@@ -39,17 +39,14 @@ func _process(delta):
 		velocity = velocity * speed
 		
 		# Show correct animation for action
-		if velocity.x != 0:
-			$AnimatedSprite.animation = "walk"
-			$AnimatedSprite.flip_v = false
-			$AnimatedSprite.flip_h = velocity.x < 0
-		elif velocity.y != 0:
-			$AnimatedSprite.animation = "up"
-			$AnimatedSprite.flip_v = velocity.y > 0
-			
-		$AnimatedSprite.play()
-	else:
-		$AnimatedSprite.stop()
+		$AnimatedSprite.flip_v = velocity.y > 0
+		
+		if velocity.x > 0:
+			rotation = PI / 2
+		elif velocity.x < 0:
+			rotation = -1 * PI / 2
+		else:
+			rotation = 0
 		
 	# Apply velocity to position
 	position += velocity * delta

@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Main.gd" type="Script" id=1]
 [ext_resource path="res://Player.tscn" type="PackedScene" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://GameScoreLabel.tscn" type="PackedScene" id=4]
 [ext_resource path="res://GameOverUI.tscn" type="PackedScene" id=5]
 [ext_resource path="res://GameStartUI.tscn" type="PackedScene" id=6]
+[ext_resource path="res://background.png" type="Texture" id=7]
 
 [sub_resource type="Curve2D" id=1]
 _data = {
@@ -39,6 +40,11 @@ position = Vector2( 240, 336 )
 [node name="GameOverUI" parent="." instance=ExtResource( 5 )]
 
 [node name="Mobs" type="Node" parent="."]
+
+[node name="Background" type="Sprite" parent="."]
+position = Vector2( 240, 360 )
+z_index = -1
+texture = ExtResource( 7 )
 
 [connection signal="timeout" from="ScoreTimer" to="." method="_on_ScoreTimer_timeout"]
 [connection signal="timeout" from="MobSpawnTimer" to="." method="_on_MobSpawnTimer_timeout"]
