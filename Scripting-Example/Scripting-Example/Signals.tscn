@@ -1,0 +1,62 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://BackgroundTile.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Character.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Signals.gd" type="Script" id=3]
+[ext_resource path="res://Health Value Label.gd" type="Script" id=4]
+
+[node name="Signals" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="Background" parent="." instance=ExtResource( 1 )]
+position = Vector2( 3, 0 )
+scale = Vector2( 1.5, 1.5 )
+
+[node name="Character" parent="." instance=ExtResource( 2 )]
+position = Vector2( 763, 452 )
+scale = Vector2( 0.5, 0.5 )
+
+[node name="Toggle Motion Button" type="Button" parent="."]
+margin_left = 63.0
+margin_top = 43.0
+margin_right = 266.0
+margin_bottom = 142.0
+text = "Toggle Motion"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Health Label" type="Label" parent="."]
+margin_left = 539.0
+margin_top = 25.0
+margin_right = 584.0
+margin_bottom = 39.0
+text = "Health:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Health Value Label" type="Label" parent="."]
+margin_left = 588.0
+margin_top = 25.0
+margin_right = 600.0
+margin_bottom = 39.0
+text = "N"
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Down Health" type="Button" parent="."]
+margin_left = 94.0
+margin_top = 206.0
+margin_right = 249.0
+margin_bottom = 270.0
+text = "Down Health"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="health_down" from="." to="Health Value Label" method="_on_Signals_health_down"]
+[connection signal="pressed" from="Toggle Motion Button" to="Character" method="_on_Toggle_Motion_Button_pressed"]
+[connection signal="pressed" from="Down Health" to="." method="_on_Down_Health_Button_pressed"]
